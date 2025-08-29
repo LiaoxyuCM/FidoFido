@@ -6,7 +6,7 @@ from .models import Passage
 
 # Create your views here.
 
-def err404(request: HttpRequest, exception: Resolver404):
+def err404(request: HttpRequest, exception: Resolver404) -> HttpResponse:
     return render(request, 'homepage/404.html', status=404, context={"current_path": request.path, "exception": type(exception).__name__})
 
 def index(request: HttpRequest) -> HttpResponse:

@@ -2,11 +2,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse, HttpResponsePermanentRedirect, HttpResponseRedirect
 from .forms import SimpleRegisterForm, PostForm, UsernameChangeForm
 from passagesharer.models import Passage
 
-def register_view(request: HttpRequest):
+def register_view(request: HttpRequest) -> HttpResponseRedirect | HttpResponsePermanentRedirect | HttpResponse:
     if request.method == "POST":
         form = SimpleRegisterForm(request.POST)
         if form.is_valid():
@@ -21,7 +21,7 @@ def register_view(request: HttpRequest):
     
     return render(request, "accounts/register.html", {"form": form})
 
-def login_view(request: HttpRequest):
+def login_view(request: HttpRequest) -> HttpResponseRedirect | HttpResponsePermanentRedirect | HttpResponse:
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -36,12 +36,12 @@ def login_view(request: HttpRequest):
     return render(request, "accounts/login.html")
 
 @login_required
-def dashboard_view(request: HttpRequest):
+def dashboard_view(request: HttpRequest) -> HttpResponse:
     passages = Passage.objects.order_by("-created_at")
     return render(request, "accounts/dashboard.html", context={"passages": passages, "user": request.user, "username": request.user.get_username()})
 
 @login_required
-def post_view(request: HttpRequest):
+def post_view(request: HttpRequest) -> HttpResponseRedirect | HttpResponsePermanentRedirect | HttpResponse:
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
@@ -58,7 +58,7 @@ def post_view(request: HttpRequest):
     return render(request, 'accounts/post_form.html', {'form': form, 'editing': False})
 
 @login_required
-def delete_passage_view(request: HttpRequest, passage_id: int):
+def delete_passage_view(request: HttpRequest, passage_id: int) -> HttpResponseRedirect | HttpResponsePermanentRedirect | HttpResponse:
     passage = get_object_or_404(Passage, id=passage_id)
     if passage.author == request.user:
         if request.method == "POST":
@@ -71,7 +71,7 @@ def delete_passage_view(request: HttpRequest, passage_id: int):
         return redirect("accounts:dashboard")
 
 @login_required
-def edit_passage_view(request: HttpRequest, passage_id: int):
+def edit_passage_view(request: HttpRequest, passage_id: int) -> HttpResponseRedirect | HttpResponsePermanentRedirect | HttpResponse:
     passage: Passage = get_object_or_404(Passage, id=passage_id)
     if passage.author == request.user:
         if request.method == "POST":
@@ -94,7 +94,7 @@ def edit_passage_view(request: HttpRequest, passage_id: int):
         return redirect("accounts:dashboard")
 
 @login_required
-def change_username(request):
+def change_username(request) -> HttpResponseRedirect | HttpResponsePermanentRedirect | HttpResponse:
     if request.method == 'POST':
         form = UsernameChangeForm(request.POST, user=request.user)
         if form.is_valid():
@@ -111,7 +111,7 @@ def change_username(request):
     
     return render(request, 'accounts/change_username.html', {'form': form})
 
-def logout_view(request: HttpRequest):
+def logout_view(request: HttpRequest) -> HttpResponseRedirect | HttpResponsePermanentRedirect:
     logout(request)
     messages.success(request, "Successfully to logout")
     return redirect('accounts:login')

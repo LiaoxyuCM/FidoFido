@@ -1,0 +1,67 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'global/style.css' %}">
+    <script src="{% static 'global/getgreeting.js' %}"></script>
+</head>
+<body>
+    <div class="main">
+        <h2><span class="GetGreeting"></span>, {% if user.is_superuser %}<span style="color: red;">{{ user.username }}</span>{% else %}{{ user.username }}{% endif %}</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+
+        <h3>Useable tools</h3>
+
+        <ul>
+            <li><a href="/"><button>Homepage</button></a></li>
+            <li><a href="{% url 'accounts:post' %}"><button>Post</button></a></li>
+        </ul>
+
+        <h3>Manage your account</h3>
+
+        <ul>
+            <li>
+                <form action="{% url 'accounts:logout' %}" method="post" class="logout-form">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
+            <li>
+                <a href="{% url 'accounts:change_username' %}"><button style="width: 10em;">Change username</button></a>
+            </li>
+        </ul>
+
+        {% if user.is_superuser %}
+            <h2 style="color: yellow;">[WARN] For management, please visit /admin instead</h2>
+            <h2>Manage user's passage(s):</h2>
+        {% else %}
+            <h2>Your passage(s):</h2>
+        {% endif %}
+            <ul class="passages_view">
+            {% for passage in passages %}
+                {% if passage.author == user or user.is_superuser %}
+                    <li>
+                        <a href="{% url 'detail' passage.id %}">{{ passage.title }}</a>
+                        <small>[ Created at <b>{{ passage.created_at|date:'Y-m-d H:i' }}</b> ][ Last updated at <b>{{ passage.last_updated_at|date:'Y-m-d H:i' }}</b> ][ written by <b>{{ passage.author.username }}</b> ]</small>
+                        <a href="{% url 'accounts:edit_passage' passage.id %}"><small>Edit</small></a>
+                        <a href="{% url 'accounts:delete_passage' passage.id %}"><small style="color: red;">Delete</small></a>
+                        <div>{{ passage.content|truncatechars:100|linebreaksbr|safe }}</div>
+                    </li>
+                {% endif %}
+            {% empty %}
+                <li>No passages available.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
+

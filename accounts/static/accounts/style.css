@@ -1,0 +1,48 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background: #a8ff78;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #78ffd6, #a8ff78); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+button {
+    border: 1px black;
+}
+
+button:hover {
+    background-color: lightgray;
+}
+
+button, input[type="text"], input[type="url"], input[type="password"], input[type="email"] {
+    border-radius: 3px;
+}
+
+@media (prefers-color-scheme: dark) {
+    * {
+        color: white;
+    }
+    body {
+        background: #333;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #333, #666);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #333, #666); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    button {
+        background-color: black;
+    }
+    button {
+        border: 1px white;
+    }
+    button:hover {
+        background-color: gray;
+    }
+    a {
+        color: cyan;
+    }
+    input[type="text"], input[type="url"], input[type="password"], input[type="email"] {
+        color: black;
+        background-color: white;
+    }
+}

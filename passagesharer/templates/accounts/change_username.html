@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change username</title>
+    <link rel="stylesheet" href="{% static 'global/style.css' %}">
+</head>
+<body>
+    <div class="main">
+        <h2>Change username</h2>
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <h3>First, please confirm your password.</h3>
+            <div>
+                <label for="id_password">Password</label>
+                {{ form.password }}
+                {% if form.password.errors %}
+                    <div>
+                        {% for error in form.password.errors %}
+                            <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <h3>Then enter your new username.</h3>
+            <div>
+                <label for="id_new_username">New username</label>
+                {{ form.new_username }}
+                {% if form.new_username.errors %}
+                    <div>
+                        {% for error in form.new_username.errors %}
+                            <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <ul>
+                <li>Your new username must be unique</li>
+            </ul>
+            <button type="submit">Update</button>
+        </form>
+
+        <a href="{% url 'accounts:dashboard' %}">Back to dashboard</a>
+    </div>
+</body>
+</html>

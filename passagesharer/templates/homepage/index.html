@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'global/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'homepage/favicon.ico' %}">
+    <title>FidoFido</title>
+</head>
+<body>
+    {% block content %}
+        <div class="main">
+            <h1>FidoFido</h1>
+            <h2>Welcome to the Homepage</h2>
+            <form method="get" action="{% url 'search_passages' %}">
+                <input type="text" name="q" placeholder="Enter keywords..." required>
+                <button type="submit">Search</button>
+            </form>
+            {% if is_logged %}
+                <p>{{ username }}<a href="/accounts/dashboard"><button>Dashboard</button></a></p>
+            {% else %}
+                <ul>
+                    <li><a href="/accounts/register"><button>Register</button></a></li>
+                    <li><a href="/accounts/login"><button>Login</button></a></li>
+                </ul>
+            {% endif %}
+            <h3>Recent Passages:</h3>
+            <ul class="passages_view">
+                {% for passage in passages %}
+                    <li>
+                        <a href="{% url 'detail' passage.id %}">{{ passage.title }}</a>
+                        <small>[ Created at <b>{{ passage.created_at|date:'Y-m-d H:i' }}</b> ][ Last updated at <b>{{ passage.last_updated_at|date:'Y-m-d H:i' }}</b> ][ written by <b>{{ passage.author.username }}</b> ]</small>
+                        <div>{{ passage.content|truncatechars:100|linebreaksbr|safe }}</div>
+                    </li>
+                {% empty %}
+                    <li>No passages available.</li>
+                {% endfor %}
+            </ul>
+            <small>Copyright LiaoxyuCM Powered by Django</small>
+        </div>
+    {% endblock %}
+</body>
+</html>

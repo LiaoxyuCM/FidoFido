@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete passage</title>
+    <link rel="stylesheet" href="{% static 'global/style.css' %}">
+</head>
+<body>
+    <div class="main">
+        <div>
+            <h1>{{ passage.title }}</h1>
+            <hr>
+            <div>{{ passage.content|linebreaks }}</div>
+            <hr>
+            <p>[ Created at <b>{{ passage.created_at|date:'Y-m-d H:i' }}</b> ][ Last updated at <b>{{ passage.last_updated_at|date:'Y-m-d H:i' }}</b> ][ written by <b>{{ passage.author.username }}</b> ]</p>
+        </div>
+        <hr>
+        <h2>Confirm deletion</h2>
+        <p>Are you sure wanna delete your passage? (There are no ways to undo after deleting passage, except you have backup(s))</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="del_psg_confirm">Yes, I'm sure</button>
+            <a href="{% url 'accounts:dashboard' %}">No, take me back</a>
+        </form>
+    </div>
+</body>
+</html>
+

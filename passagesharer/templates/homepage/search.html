@@ -1,0 +1,38 @@
+{% extends 'homepage/index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+</head>
+<body>
+    {% block content %}
+        <div class="main">
+            <h2>Search Passages</h2>
+            <form method="get" action="{% url 'search_passages' %}">
+                <input type="text" name="q" value="{{ query }}" placeholder="Enter keywords..." required>
+                <button type="submit">Search</button>
+            </form>
+            <a href="{% url 'index' %}">Back to homepage</a>
+            <hr>
+            {% if query %}
+                <h3>Result:</h3>
+                {% if results %}
+                    <ul class="passages_view">
+                        {% for passage in results %}
+                            <li>
+                                <a href="{% url 'detail' passage.id %}">{{ passage.title }}</a>
+                                <small>(UTC {{ passage.created_at|date:'Y-m-d H:i' }})</small>
+                                <div>{{ passage.content|truncatechars:200|linebreaksbr|safe }}</div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No relevant content found.</p>
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endblock %}
+</body>
+</html>

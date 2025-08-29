@@ -1,0 +1,198 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background: #a8ff78;  /* fallback for old browsers */
+    background-image: url('/static/global/wallpaper_day.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+div.main {
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    margin: 5px;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2),
+                0 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+button, input {
+    height: 2em;
+    border: none;
+    background-color: rgba(252, 252, 252, 0.75);
+    color: black;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2),
+                0 1px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: .3s all ease-in-out;
+    margin: 3px;
+}
+
+button {
+    cursor: pointer;
+    width: 6rem;
+}
+
+button:hover {
+    background-color: rgba(211, 211, 211, 0.75);
+}
+
+button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    border-radius: 5px;
+    background-color: #FCFCFC;
+    z-index: -114514;
+    filter: blur(5px);
+}
+
+button:hover::after {
+    animation: stretching 0.3s ease-in-out forwards;
+}
+
+button:not(button:hover)::after {
+    animation: unstretching 0.3s ease-in-out forwards;
+}
+
+button, input, textarea {
+    border-radius: 3px;
+}
+
+input {
+    width: 15rem;
+}
+
+textarea {
+    width: 500px;
+    height: 309px;
+}
+
+ul.passages_view li {
+    position: relative;
+    margin: 10px;
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2),
+                0 1px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+ul.passages_view li:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3),
+                0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+ul.passages_view li::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    border-radius: 5px;
+    background-color: #FCFCFC;
+    z-index: -114514;
+    filter: blur(5px);
+}
+
+ul.passages_view li:hover::after {
+    animation: stretching 0.3s ease-in-out forwards;
+}
+
+ul.passages_view li:not(ul.passages_view li:hover)::after {
+    animation: unstretching 0.3s ease-in-out forwards;
+}
+
+button.del_psg_confirm {
+    background-color: rgba(255, 0, 0, 0.75)!important;
+    color: white!important;
+    width: 10rem!important;
+}
+
+button.del_psg_confirm::after {
+    background-color: rgba(255, 164, 180, 0.75);
+}
+
+button.del_psg_confirm:hover::after {
+    animation: stretching_shinning .6s ease-in-out forwards;
+    width: 100%;
+    box-shadow: 0 0 10px red,
+    0 0 20px red,
+    0 0 30px red;
+}
+
+form {
+    margin: 0;
+}
+
+@keyframes stretching {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes stretching_shinning {
+    from {
+        width: 0;
+        box-shadow: none;
+    }
+    50% {
+        width: 100%;
+        box-shadow: none;
+    }
+    to {
+        width: 100%;
+        box-shadow: 0 0 10px red,
+        0 0 20px red
+        0 0 30px red;
+    }
+}
+
+@keyframes unstretching {
+    from { width: 100%; }
+    to { width: 0; }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-image: url('/static/global/wallpaper_night.jpg');
+    }
+    h1, h2, h3, h4, h5, h6, p, label, button, small, li {
+        color: white;
+    }
+    button {
+        background-color: rgba(0, 0, 0, 0.75);
+    }
+    button:hover {
+        background-color: rgba(128, 128, 128, 0.75);
+    }
+    button::after {
+        background-color: grey;
+    }
+    button.del_psg_confirm::after {
+        background-color: rgba(128, 0, 128, 0.75);
+    }
+    input {
+        background-color: rgba(255, 255, 255, 0.75);
+    }
+    a {
+        color: cyan;
+    }
+    textarea {
+        color: black;
+    }
+    ul.passages_view li::after {
+        background-color: gray;
+    }
+}

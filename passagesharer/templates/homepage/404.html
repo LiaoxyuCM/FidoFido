@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'global/style.css' %}">
+    <title>404 Not Found</title>
+</head>
+<body>
+    <div class="main">
+        <h1>404 - Not Found</h1>
+        <p>There are nothing you are looking for...</p>
+        <p>You are now in {{ current_path }}</p>
+        <a href="/">Back to homepage</a>
+        <hr>
+        <p>{{ exception }}</p>
+    </div>
+</body>
+</html>

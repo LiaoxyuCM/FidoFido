@@ -22,7 +22,7 @@ div.main {
                 0 1px 10px rgba(0, 0, 0, 0.1);
 }
 
-button, input {
+button, input[type="text"], input[type="email"], input[type="password"] {
     height: 2em;
     border: none;
     background-color: rgba(252, 252, 252, 0.75);
@@ -69,7 +69,7 @@ button, input, textarea {
     border-radius: 3px;
 }
 
-input {
+input[type="text"], input[type="email"], input[type="password"] {
     width: 15rem;
 }
 

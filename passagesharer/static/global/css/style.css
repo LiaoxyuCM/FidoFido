@@ -4,7 +4,7 @@
 
 body {
     background: #a8ff78;  /* fallback for old browsers */
-    background-image: url('/static/global/wallpaper_day.jpg');
+    background-image: url('/static/global/image/wallpaper_day.jpg');
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -166,7 +166,7 @@ form {
 
 @media (prefers-color-scheme: dark) {
     body {
-        background-image: url('/static/global/wallpaper_night.jpg');
+        background-image: url('/static/global/image/wallpaper_night.jpg');
     }
     h1, h2, h3, h4, h5, h6, p, label, button, small, li {
         color: white;

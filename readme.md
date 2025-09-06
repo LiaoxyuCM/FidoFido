@@ -47,3 +47,7 @@ python manage.py migrate
 python manage.py createsuperuser # This command will ask you entering username, email and password.
 python manage.py runserver
 ```
+
+## Warning
+
+In fidofido/settings.py, SECRET_KEY is public.

@@ -145,6 +145,10 @@ form {
     margin: 0;
 }
 
+code {
+    font-family: 'Courier New', Courier, monospace;
+}
+
 @keyframes stretching {
     from { width: 0; }
     to { width: 100%; }

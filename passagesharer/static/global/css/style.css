@@ -1,5 +1,13 @@
+@font-face {
+    font-family: 'Minecraft-Seven_v2';
+    src: url('https://www.minecraft.net/etc.clientlibs/minecraftnet/clientlibs/clientlib-site/resources/fonts/Minecraft-Seven_v2.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 * {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Minecraft-Seven_v2', '@Unifont', 'Unifont', 'Courier New', Courier, monospace;
 }
 
 body {

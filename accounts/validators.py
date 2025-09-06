@@ -16,9 +16,9 @@ class StandardPasswordValidator:
                 code='password_no_letter',
             )
         
-        if not re.search(r'[!@#$%^&*(),.?":{}|<>]', password):
+        if not re.search('[!@#$%^&*()_+\\-=\\[\\]{};\':"\\\\|,.<>\\/?]', password):
             raise ValidationError(
-                _("Your password has no special characters. [!@#$%^&*(),.?\":{}|<>]"),
+                _("Your password has no special characters."),
                 code='password_no_special',
             )
 

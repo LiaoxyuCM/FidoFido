@@ -2,6 +2,13 @@
 
 It is a django-powered project now! \(Not a pure html+css+js project\)
 
+## Warning
+
+### In fidofido/settings.py
+
+1. **SECRET_KEY is public.**
+2. **Turn DEBUG ON before visiting /admin/**
+
 ## Initialization
 
 ### Dependencies
@@ -48,6 +55,3 @@ python manage.py createsuperuser # This command will ask you entering username, 
 python manage.py runserver
 ```
 
-## Warning
-
-In fidofido/settings.py, SECRET_KEY is public.

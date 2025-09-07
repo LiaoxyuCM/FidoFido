@@ -25,6 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-845255e+o-(^ke_n_i$3l2y%baw0(=gd&=!pqy5!9)6%bdu+=2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# AUTHOR SELF-COMMENT: WARNING: Turn DEBUG ON before visiting /admin/
 DEBUG = True
 
 # Application definition
@@ -122,11 +123,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
-import os
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'passagesharer', 'static'),
-]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

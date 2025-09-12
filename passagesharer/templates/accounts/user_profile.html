@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
+    <link rel="shortcut icon" href="{% static 'global/icon/favicon.ico' %}" type="image/x-icon">
+    <title>{{ profile_user }}'s profile</title>
+</head>
+<body>
+    <div class="main">
+        <h2>{{ profile_user.get_username }}'s profile</h2>
+        <h3>His/Her passages:</h3>
+        <ul class="passages_view">
+            {% for passage in passages %}
+                <li>
+                    <a href="{% url 'detail' passage.id %}">{{ passage.title }}</a>
+                    <small>[ Created at <b>{{ passage.created_at|date:'Y-m-d H:i' }}</b> ][ Last updated at <b>{{ passage.last_updated_at|date:'Y-m-d H:i' }}</b> ][ written by <b>{{ passage.author.username }}</b> ]</small>
+                    <div>{{ passage.content|truncatechars:100|linebreaksbr|safe }}</div>
+                </li>
+            {% empty %}
+                <li>No passages available.</li>
+            {% endfor %}
+        </ul>
+        <a href="/">Back to homepage</a>
+    </div>
+</body>
+</html>

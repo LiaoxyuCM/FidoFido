@@ -52,7 +52,7 @@
                 {% if passage.author == user or user.is_superuser %}
                     <li>
                         <a href="{% url 'detail' passage.id %}">{{ passage.title }}</a>
-                        <small>[ Created at <b>{{ passage.created_at|date:'Y-m-d H:i' }}</b> ][ Last updated at <b>{{ passage.last_updated_at|date:'Y-m-d H:i' }}</b> ][ written by <b>{{ passage.author.username }}</b> ]</small>
+                        <small>[ Created at <b>{{ passage.created_at|date:'Y-m-d H:i' }}</b> ][ Last updated at <b>{{ passage.last_updated_at|date:'Y-m-d H:i' }}</b> ][ written by <a href="{% url 'accounts:user_profile' passage.author.id %}">{{ passage.author.username }}</a> ]</small>
                         <a href="{% url 'accounts:edit_passage' passage.id %}"><small>Edit</small></a>
                         <a href="{% url 'accounts:delete_passage' passage.id %}"><small style="color: red;">Delete</small></a>
                         <div>{{ passage.content|truncatechars:100|linebreaksbr|safe }}</div>

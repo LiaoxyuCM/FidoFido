@@ -26,6 +26,7 @@ def detail(request: HttpRequest, passage_id: int) -> HttpResponse:
     passage_content_html = markdown.markdown(passage.content)
     return render(request, 'homepage/detail.html', {'passage': passage, 'passage_content_html': passage_content_html})
 
+
 def search_passages(request: HttpRequest) -> HttpResponse:
     query = request.GET.get('q', '')
     results = []

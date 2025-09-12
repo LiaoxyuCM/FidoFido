@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import get_user_model
 from django.contrib import messages
 from django.http import HttpRequest, HttpResponse, HttpResponsePermanentRedirect, HttpResponseRedirect
 from .forms import SimpleRegisterForm, PostForm, UsernameChangeForm
@@ -115,3 +116,8 @@ def logout_view(request: HttpRequest) -> HttpResponseRedirect | HttpResponsePerm
     logout(request)
     messages.success(request, "Successfully to logout")
     return redirect('accounts:login')
+
+def user_profile_view(request: HttpRequest, userid: int) -> HttpResponse:
+    user = get_object_or_404(get_user_model(), id=userid)
+    passages = Passage.objects.filter(author=user).order_by('-created_at')
+    return render(request, 'accounts/user_profile.html', {'profile_user': user, 'passages': passages, 'is_logged': request.user.is_authenticated, 'current_user': request.user})

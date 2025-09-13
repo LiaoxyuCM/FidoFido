@@ -6,12 +6,20 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Unifont';
+    src: url('/static/global/fonts/unifont-12.1.04.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 * {
-    font-family: 'Minecraft-Seven_v2', '@Unifont', 'Unifont', 'Courier New', Courier, monospace;
+    font-family: 'Minecraft-Seven_v2', 'Unifont', 'Courier New', Courier, monospace;
 }
 
 body {
-    background: #a8ff78;  /* fallback for old browsers */
+    background: #eee;  /* fallback for old browsers */
     background-image: url('/static/global/image/wallpaper_day.jpg');
     background-attachment: fixed;
     background-position: center;

@@ -60,7 +60,7 @@ python manage.py runserver
 ### How does Fido come from?
 
 This word "Fido" comes from
-**[Old version of PEP-English Textbook / Grade 5-Volume II](https://book.pep.com.cn/1212001502145/mobile/index.html) / Unit 5 "Whose dog is it?" / Section B / Let's talk.**
+**Old version of PEP-English Textbook / Grade 5-Volume II / Unit 5 "Whose dog is it?" / Section B / Let's talk.**
 
 ![Fido's origin](https://github.com/user-attachments/assets/d893fb05-5735-4a29-b097-b3625c1acfbe)
 

@@ -14,6 +14,9 @@ class SimpleRegisterForm(UserCreationForm):
         super().__init__(*args, **kwargs)
 
         self.fields['password1'].validators.append(StandardPasswordValidator()) # type: ignore
+        self.fields['username'].widget.attrs.update({'placeholder': 'Username'})
+        self.fields['password1'].widget.attrs.update({'placeholder': 'Password'})
+        self.fields['password2'].widget.attrs.update({'placeholder': 'Confirm Password'})
 
         if 'email' in self.fields:
             del self.fields['email']

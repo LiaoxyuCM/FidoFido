@@ -38,6 +38,15 @@ div.main {
                 0 1px 10px rgba(0, 0, 0, 0.1);
 }
 
+div.login_temp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    text-align: center;
+}
+
 button, input[type="text"], input[type="email"], input[type="password"] {
     height: 2em;
     border: none;
@@ -87,11 +96,20 @@ button, input, textarea {
 
 input[type="text"], input[type="email"], input[type="password"] {
     width: 15rem;
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 textarea {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.3);
     width: 500px;
     height: 309px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2),
+                0 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+ul li {
+    text-align: left;
 }
 
 ul.passages_view li {
@@ -184,6 +202,23 @@ code {
     to { width: 0; }
 }
 
+/* Reserved keyframes animation */
+@keyframes color_transition {
+    0% {background-color: red;}
+    8.33% {background-color: orange;}
+    16.67% {background-color: yellow;}
+    25% {background-color: rgb(165, 255, 0);}
+    33.33% {background-color: rgb(0, 255, 0);}
+    41.67% {background-color: rgb(0, 255, 165);}
+    50% {background-color: rgb(0, 255, 255);}
+    58.33% {background-color: rgb(0, 165, 255);}
+    66.67% {background-color: rgb(0, 0, 255);}
+    75% {background-color: rgb(165, 0, 255);}
+    83.33% {background-color: rgb(255, 0, 255);}
+    91.67% {background-color: rgb(255, 0, 165);}
+    100%  {background-color: red;}
+}
+
 @media (prefers-color-scheme: dark) {
     body {
         background-image: url('/static/global/image/wallpaper_night.jpg');
@@ -203,14 +238,15 @@ code {
     button.del_psg_confirm::after {
         background-color: rgba(128, 0, 128, 0.75);
     }
-    input {
-        background-color: rgba(255, 255, 255, 0.75);
+    input[type="text"], input[type="email"], input[type="password"], textarea{
+        background-color: rgba(0, 0, 0, 0.3);
+        color: white;
+    }
+    input::placeholder {
+        color: rgb(207, 207, 207);
     }
     a {
         color: cyan;
-    }
-    textarea {
-        color: black;
     }
     ul.passages_view li::after {
         background-color: gray;

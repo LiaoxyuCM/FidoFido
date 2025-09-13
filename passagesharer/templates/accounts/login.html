@@ -10,10 +10,9 @@
     <link rel="shortcut icon" href="{% static 'global/icon/favicon.ico' %}" type="image/x-icon">
 </head>
 <body>
-    <div class="main">
+    <div class="main login_temp">
         <h2>Welcome back!</h2>
 
-        <a href="/"><button>Homepage</button></a>
 
         {% if messages %}
             {% for message in messages %}
@@ -24,17 +23,16 @@
         <form method="post">
             {% csrf_token %}
             <div>
-                <label for="username">Username:</label>
-                <input type="text" name="username" required>
+                <input type="text" name="username" placeholder="Username" required>
             </div>
             <div>
-                <label for="password">Password:</label>
-                <input type="password" name="password" required>
+                <input type="password" name="password" placeholder="Password" required>
             </div>
             <button type="submit">Login</button>
         </form>
 
         <p>New to FidoFido?<a href="{% url 'accounts:register' %}">Register</a></p>
+        <a href="/">Homepage</a>
     </div>
 </body>
 </html>

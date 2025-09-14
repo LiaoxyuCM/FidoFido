@@ -15,3 +15,17 @@ class Passage(models.Model):
 
     def __str__(self):
         return self.title
+
+class Comment(models.Model):
+    to_passage = models.ForeignKey(
+        Passage,
+        on_delete=models.CASCADE,
+        related_name="comments"
+    )
+    content = models.CharField(max_length=512)
+    reviewer = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="reviewers",
+        null=True
+    )

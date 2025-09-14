@@ -15,6 +15,29 @@
         <div>{{ passage_content_html|safe }}</div>
         <hr>
         <p>[ Created at <b>{{ passage.created_at|date:'Y-m-d H:i' }}</b> ][ Last updated at <b>{{ passage.last_updated_at|date:'Y-m-d H:i' }}</b> ][ written by <a href="{% url 'accounts:user_profile' passage.author.id %}">{{ passage.author.username }}</a> ] <a href="{% url 'index' %}">Back to homepage</a></p>
+        <hr>
+        <div>
+            {% for comment in comments %}
+                <div style="margin-bottom:10px;">
+                    <p>&lt;<b>{{ comment.reviewer.username }}</b>&gt; {{ comment.content }} {% if user.is_authenticated and comment.reviewer == user %}<label for="delete_comment{{ comment.id }}" style="color: red; text-decoration: underline; cursor: pointer; float: right;">delete</label>{% endif %}</p>
+                    {% if user.is_authenticated and comment.reviewer == user %}
+                        <form method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="delete_comment_id" value="{{ comment.id }}">
+                            <button type="submit" id="delete_comment{{ comment.id }}" style="background-color:red; display: none;">Delete</button>
+                        </form>
+                    {% endif %}
+                </div>
+            {% empty %}
+                <p>No comments yet</p>
+            {% endfor %}
+        </div>
+        <hr>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" style="width: 200px">Submit Comment</button>
+        </form>
     </div>
 </body>
 </html>

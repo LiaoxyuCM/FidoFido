@@ -1,8 +1,11 @@
 from django.http import HttpResponse, HttpRequest
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from django.urls import Resolver404
+import markdown
 from .models import Passage
+from .forms import CommentForm
+from .models import Comment
 
 # Create your views here.
 
@@ -22,9 +25,34 @@ def detail(request: HttpRequest, passage_id: int) -> HttpResponse:
     except Passage.DoesNotExist:
         return render(request, 'homepage/404.html', status=404, context={"current_path": request.path})
     # Markdown support
-    import markdown
     passage_content_html = markdown.markdown(passage.content)
-    return render(request, 'homepage/detail.html', {'passage': passage, 'passage_content_html': passage_content_html})
+    comments = Comment.objects.filter(to_passage=passage).select_related('reviewer').all()
+    if request.method == 'POST':
+        if 'delete_comment_id' in request.POST:
+            comment_id = request.POST.get('delete_comment_id')
+            comment = get_object_or_404(Comment, id=comment_id, to_passage=passage)
+            if comment.reviewer == request.user:
+                comment.delete()
+                return redirect('detail', passage_id=passage_id)
+        if not request.user.is_authenticated:
+            form = CommentForm(request.POST)
+            form.add_error(None, 'Please login before commenting')
+        else:
+            form = CommentForm(request.POST)
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.to_passage = passage
+                comment.reviewer = request.user
+                comment.save()
+                return redirect('detail', passage_id=passage_id)
+    else:
+        form = CommentForm()
+    return render(request, 'homepage/detail.html', {
+        'passage': passage,
+        'passage_content_html': passage_content_html,
+        'comments': comments,
+        'form': form
+    })
 
 
 def search_passages(request: HttpRequest) -> HttpResponse:

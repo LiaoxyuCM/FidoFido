@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="{% static 'global/icon/favicon.ico' %}" type="image/x-icon">
 </head>
 <body>
-    <div class="main">
+    <div class="center_temp">
         <h2>Change username</h2>
         {% if messages %}
             {% for message in messages %}
@@ -20,9 +20,7 @@
 
         <form method="post">
             {% csrf_token %}
-            <h3>First, please confirm your password.</h3>
             <div>
-                <label for="id_password">Password</label>
                 {{ form.password }}
                 {% if form.password.errors %}
                     <div>
@@ -32,9 +30,7 @@
                     </div>
                 {% endif %}
             </div>
-            <h3>Then enter your new username.</h3>
             <div>
-                <label for="id_new_username">New username</label>
                 {{ form.new_username }}
                 {% if form.new_username.errors %}
                     <div>

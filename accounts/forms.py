@@ -33,17 +33,17 @@ class PostForm(forms.ModelForm):
 class UsernameChangeForm(forms.Form):
     new_username = forms.CharField(
         max_length=150,
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': "New username"}),
         label="New username"
     )
     password = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': "Confirm password"}),
         label="Confirm password"
     )
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)
-        super(UsernameChangeForm, self).__init__(*args, **kwargs)
+        super(UsernameChangeForm, self).__init__(*args, **kwargs) 
 
     def clean_new_username(self):
         new_username = self.cleaned_data.get('new_username')

@@ -1,3 +1,4 @@
+/*
 @font-face {
     font-family: 'Minecraft-Seven_v2';
     src: url('https://www.minecraft.net/etc.clientlibs/minecraftnet/clientlibs/clientlib-site/resources/fonts/Minecraft-Seven_v2.woff2') format('woff2');
@@ -5,17 +6,18 @@
     font-style: normal;
     font-display: swap;
 }
+*/
 
 @font-face {
-    font-family: 'Unifont';
-    src: url('/static/global/fonts/unifont-12.1.04.ttf') format('truetype');
+    font-family: 'Minecraft_AE';
+    src: url('/static/global/fonts/pixel.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
 * {
-    font-family: 'Minecraft-Seven_v2', 'Unifont', 'Courier New', Courier, monospace;
+    font-family: 'Minecraft_AE', 'Courier New', Courier, monospace;
 }
 
 body {

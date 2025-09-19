@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'homepage/favicon.ico' %}">
-    <script src="{% static 'global/js/bg_img_height_controller.js' %}"></script>
+    <script src="{% static 'global/js/change_colormode.js' %}"></script>
+    <script src="{% static 'global/js/search_input_field_enter_monitor.js' %}"></script>
     <link rel="shortcut icon" href="{% static 'global/icon/favicon.ico' %}" type="image/x-icon">
     <title>FidoFido</title>
 </head>
@@ -14,11 +15,10 @@
     {% block content %}
         <div class="main">
             <h1>FidoFido</h1>
-            <h2>Welcome to the Homepage</h2>
-            <form method="get" action="{% url 'search_passages' %}">
-                <input type="text" name="q" placeholder="Enter keywords..." required>
-                <button type="submit">Search</button>
-            </form>
+            <div class="search_description">
+                <input type="text" class="search_text_field" name="q" placeholder="Enter keywords..." required>
+                <button onclick="window.location.href = '/search/' + document.querySelector('input.search_text_field').value">Search</button>
+            </div>
             {% if is_logged %}
                 <p>{{ username }}<a href="/accounts/dashboard"><button>Dashboard</button></a></p>
             {% else %}
@@ -40,9 +40,13 @@
                 {% endfor %}
             </ul>
             <small>Copyright LiaoxyuCM Powered by Django</small>
+            <a class="colormode_link">
+                <button class="change_colormode_button">
+                    <img />
+                </button>
+            </a>
         </div>
     {% endblock %}
-    <p>Enjoy the scenery!</p>
-    <div class="bg_img_viewer"></div>
+    
 </body>
 </html>

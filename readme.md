@@ -7,7 +7,7 @@ It is a django-powered project now! \(Not a pure html+css+js project\)
 ### In fidofido/settings.py
 
 1. **SECRET_KEY is public.**
-2. **Turn DEBUG ON before visiting /admin/**
+2. Always **Turn debug ON**
 
 ## Initialization
 

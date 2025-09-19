@@ -15,12 +15,25 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.views.generic.base import RedirectView
-from django.urls import path
+from django.urls import path, register_converter
 from . import views  # Import your views module
 
+class ColorModeConverter:
+    regex = 'light|dark'
+
+    def to_python(self, value):
+        return value
+
+    def to_url(self, value):
+        return value
+    
+register_converter(ColorModeConverter, 'colormode')
+
 urlpatterns = [
-    path('', views.index, name='index'),  # Redirect root URL to
-    path('search/', views.search_passages, name='search_passages'),
+    path('', views.index, name='index'),  # Redirect root URL to index view
+    path('search/', RedirectView.as_view(url='/', permanent=True)),
+    path('search/<str:query>/', views.search_passages, name='search_passages'),
     path('passage/', RedirectView.as_view(url='/', permanent=True)),
     path('passage/detail/<int:passage_id>/', views.detail, name='detail'),
+    path('change_color_mode/<colormode:color_mode>/', views.change_color_mode, name='change_color_mode'),
 ]

@@ -172,6 +172,17 @@ button.del_psg_confirm:hover {
                  0 0 20px tomato;
 }
 
+button.change_colormode_button {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    
+    position: fixed;
+    top: 0%;
+    left: 100%;
+    transform: translate(-100%, 0%) translate(-23px, 23px);
+}
+
 /* button.del_psg_confirm::after {
     background-color: rgba(255, 164, 180, 0.75);
 } */
@@ -236,7 +247,43 @@ code {
     100%  {background-color: red;}
 }
 
-@media (prefers-color-scheme: dark) {
+/* Dark mode styles */
+
+
+body.dark-mode {
+    background-image: url('/static/global/image/wallpaper_night.jpg');
+}
+.dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6,
+.dark-mode p, .dark-mode label, .dark-mode button, .dark-mode small, .dark-mode li {
+    color: white;
+}
+.dark-mode button {
+    background-color: rgba(0, 0, 0, 0.75);
+}
+.dark-mode button:hover {
+    background-color: rgba(128, 128, 128, 0.75);
+}
+/* button::after {
+    background-color: grey;
+} */
+/* button.del_psg_confirm::after {
+    background-color: rgba(128, 0, 128, 0.75);
+} */
+.dark-mode input[type="text"], .dark-mode input[type="email"], .dark-mode input[type="password"], .dark-mode textarea {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+}
+.dark-mode input::placeholder {
+    color: rgb(207, 207, 207);
+}
+.dark-mode a {
+    color: cyan;
+}
+.dark-mode ul.passages_view li::after {
+    background-color: gray;
+}
+
+/* @media (prefers-color-scheme: dark) {
     body {
         background-image: url('/static/global/image/wallpaper_night.jpg');
     }
@@ -249,13 +296,13 @@ code {
     button:hover {
         background-color: rgba(128, 128, 128, 0.75);
     }
-    /* button::after {
-        background-color: grey;
-    } */
-    /* button.del_psg_confirm::after {
-        background-color: rgba(128, 0, 128, 0.75);
-    } */
-    input[type="text"], input[type="email"], input[type="password"], textarea{
+//  button::after {
+//      background-color: grey;
+//  }
+//  button.del_psg_confirm::after {
+//     background-color: rgba(128, 0, 128, 0.75);
+// }
+   input[type="text"], input[type="email"], input[type="password"], textarea{
         background-color: rgba(0, 0, 0, 0.3);
         color: white;
     }
@@ -268,4 +315,4 @@ code {
     ul.passages_view li::after {
         background-color: gray;
     }
-}
+} */

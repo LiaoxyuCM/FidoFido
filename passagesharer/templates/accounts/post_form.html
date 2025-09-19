@@ -8,9 +8,10 @@
     <title>{% if editing %}Edit passage{% else %}Post{% endif %}</title>
     <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
     <link rel="shortcut icon" href="{% static 'global/icon/favicon.ico' %}" type="image/x-icon">
+    <script src="{% static 'global/js/change_colormode.js' %}"></script>
 </head>
 <body>
-    <div class="main">
+    <div class="center_temp" style="width: 520px;">
         <h2>{% if editing %}Edit passage{% else %}Post{% endif %}</h2>
 
         <form method="post">
@@ -34,6 +35,11 @@
         </form>
 
         <a href="{% url 'accounts:dashboard' %}" class="back-btn">Back to dashboard</a>
+        <a class="colormode_link">
+            <button class="change_colormode_button">
+                <img />
+            </button>
+        </a>
     </div>
 </body>
 </html>

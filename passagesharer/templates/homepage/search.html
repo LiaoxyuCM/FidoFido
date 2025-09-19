@@ -10,10 +10,10 @@
     {% block content %}
         <div class="main">
             <h2>Search Passages</h2>
-            <form method="get" action="{% url 'search_passages' %}">
-                <input type="text" name="q" value="{{ query }}" placeholder="Enter keywords..." required>
-                <button type="submit">Search</button>
-            </form>
+            <div class="search_description">
+                <input type="text" class="search_text_field" name="q" placeholder="Enter keywords..." value="{{ query }}" required>
+                <button onclick="window.location.href = '/search/' + document.querySelector('input.search_text_field').value">Search</button>
+            </div>
             <a href="{% url 'index' %}">Back to homepage</a>
             <hr>
             {% if query %}
@@ -23,7 +23,7 @@
                         {% for passage in results %}
                             <li>
                                 <a href="{% url 'detail' passage.id %}">{{ passage.title }}</a>
-                                <small>(UTC {{ passage.created_at|date:'Y-m-d H:i' }})</small>
+                                <small>[ Created at <b>{{ passage.created_at|date:'Y-m-d H:i' }}</b> ][ Last updated at <b>{{ passage.last_updated_at|date:'Y-m-d H:i' }}</b> ][ written by <a href="{% url 'accounts:user_profile' passage.author.id %}">{{ passage.author.username }}</a> ]</small>
                                 <div>{{ passage.content|truncatechars:200|linebreaksbr|safe }}</div>
                             </li>
                         {% endfor %}
@@ -32,6 +32,11 @@
                     <p>No relevant content found.</p>
                 {% endif %}
             {% endif %}
+            <a class="colormode_link">
+                <button class="change_colormode_button">
+                    <img />
+                </button>
+            </a>
         </div>
     {% endblock %}
 </body>

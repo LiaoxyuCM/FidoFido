@@ -55,11 +55,16 @@ def detail(request: HttpRequest, passage_id: int) -> HttpResponse:
     })
 
 
-def search_passages(request: HttpRequest) -> HttpResponse:
-    query = request.GET.get('q', '')
+def search_passages(request: HttpRequest, query: str) -> HttpResponse:
     results = []
     if query:
         results = Passage.objects.filter(
             Q(title__icontains=query)
         ).order_by('-created_at')
     return render(request, 'homepage/search.html', {'query': query, 'results': results})
+
+
+def change_color_mode(request: HttpRequest, color_mode: str) -> HttpResponse:
+    response = redirect(request.GET.get('next', 'index'))
+    response.set_cookie('color_mode', color_mode, max_age=30*24*60*60)  # 30 days
+    return response

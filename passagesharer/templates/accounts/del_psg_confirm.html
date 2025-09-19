@@ -8,6 +8,7 @@
     <title>Delete passage</title>
     <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
     <link rel="shortcut icon" href="{% static 'global/icon/favicon.ico' %}" type="image/x-icon">
+    <script src="{% static 'global/js/change_colormode.js' %}"></script>
 </head>
 <body>
     <div class="main">
@@ -26,6 +27,11 @@
             <button type="submit" class="del_psg_confirm">Yes, I'm sure</button>
             <a href="{% url 'accounts:dashboard' %}">No, take me back</a>
         </form>
+        <a class="colormode_link">
+            <button class="change_colormode_button">
+                <img />
+            </button>
+        </a>
     </div>
 </body>
 </html>

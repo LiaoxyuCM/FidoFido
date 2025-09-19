@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
     <link rel="shortcut icon" href="{% static 'global/icon/favicon.ico' %}" type="image/x-icon">
+    <script src="{% static 'global/js/change_colormode.js' %}"></script>
     <title>404 Not Found</title>
 </head>
 <body>
@@ -16,6 +17,11 @@
         <a href="/">Back to homepage</a>
         <hr>
         <p>{{ exception }}</p>
+        <a class="colormode_link">
+            <button class="change_colormode_button">
+                <img />
+            </button>
+        </a>
     </div>
 </body>
 </html>

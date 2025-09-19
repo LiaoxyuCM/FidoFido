@@ -8,6 +8,7 @@
     <title>Register</title>
     <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
     <link rel="shortcut icon" href="{% static 'global/icon/favicon.ico' %}" type="image/x-icon">
+    <script src="{% static 'global/js/change_colormode.js' %}"></script>
 </head>
 <body>
     <div class="center_temp" style="width: 350px;">
@@ -48,6 +49,11 @@
             
         <p>Already have an account?<a href="{% url 'accounts:login' %}">Login</a></p>
         <a href="/">Homepage</a>
+        <a class="colormode_link">
+            <button class="change_colormode_button">
+                <img />
+            </button>
+        </a>
     </div>
 </body>
 </html>

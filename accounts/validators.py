@@ -23,7 +23,7 @@ class StandardPasswordValidator:
             )
 
     def get_help_text(self):
-        return _("Your password must include numbers, letters, and special characters.")
+        return _("Your password must include numbers, letters, and special characters at once.")
 
     def __call__(self, password: str, user=None):
         return self.validate(password, user)

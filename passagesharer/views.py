@@ -21,7 +21,7 @@ def index(request: HttpRequest) -> HttpResponse:
 
 def detail(request: HttpRequest, passage_id: int) -> HttpResponse:
     try:
-        passage = Passage.objects.get(pk=passage_id)  # Fetch the specific passage by ID
+        passage = Passage.objects.get(id=passage_id)  # Fetch the specific passage by ID
     except Passage.DoesNotExist:
         return render(request, 'homepage/404.html', status=404, context={"current_path": request.path})
     # Markdown support

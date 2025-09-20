@@ -9,6 +9,16 @@ It is a django-powered project now! \(Not a pure html+css+js project\)
 1. **SECRET_KEY is public.**
 2. Always **Turn debug ON**
 
+## Preview
+
+[Click here](https://fidofido-preview.rth1.xyz/)
+
+Or access manually:
+https://fidofido-preview.rth1.xyz
+
+### Alternative plan
+https://fidofido-preview.rth2.xyz
+
 ## Initialization
 
 ### Dependencies

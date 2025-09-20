@@ -23,8 +23,8 @@
                 <p>{{ username }}<a href="/accounts/dashboard"><button>Dashboard</button></a></p>
             {% else %}
                 <ul>
-                    <li><a href="/accounts/register"><button>Register</button></a></li>
-                    <li><a href="/accounts/login"><button>Login</button></a></li>
+                    <li><a href="{% url 'accounts:register' %}"><button>Register</button></a></li>
+                    <li><a href="{% url 'accounts:login' %}"><button>Login</button></a></li>
                 </ul>
             {% endif %}
             <h3>Recent Passages:</h3>

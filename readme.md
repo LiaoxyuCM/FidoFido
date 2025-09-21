@@ -7,7 +7,6 @@ It is a django-powered project now! \(Not a pure html+css+js project\)
 ### In fidofido/settings.py
 
 1. **SECRET_KEY is public.**
-2. Always **Turn debug ON**
 
 ## Preview
 
@@ -44,9 +43,10 @@ cd FidoFido
 rm -rf ./.git
 
 # Step 2
-pip install -r requirements.txt # If you didn't installed Django and Markdown (These packages are REQUIRED!).
+pip install -r requirements.txt # If you didn't installed the PyPI package listed above (These packages are REQUIRED!).
 python manage.py makemigrations
 python manage.py migrate
+python manage.py collectstatic # This command will ask you "You have requested to collect static files at the destination location as specified in your settings file. This will overwrite existing files! Are you sure you want to do this?" Enter "yes" to continue.
 python manage.py createsuperuser # This command will ask you entering username, email and password.
 python manage.py runserver
 ```
@@ -58,9 +58,10 @@ cd FidoFido
 rd ./.git
 
 # Step 2
-pip install -r requirements.txt # If you didn't installed Django and Markdown (These packages are REQUIRED!).
+pip install -r requirements.txt # If you didn't installed the PyPI package listed above (These packages are REQUIRED!).
 python manage.py makemigrations
 python manage.py migrate
+python manage.py collectstatic # This command will ask you "You have requested to collect static files at the destination location as specified in your settings file. This will overwrite existing files! Are you sure you want to do this?" Enter "yes" to continue.
 python manage.py createsuperuser # This command will ask you entering username, email and password.
 python manage.py runserver
 ```

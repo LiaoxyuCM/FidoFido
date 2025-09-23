@@ -1,13 +1,13 @@
 ---
 name: Feature request
 about: Feature request of FidoFido-Standard
-title: "[FEATURE]"
+title: "[FEATURE] "
 labels: enhancement
 assignees: ''
 
 ---
 
-<!-- What feature\(s\) do you want? -->
+<!-- What feature(s) do you want? -->
 1. 
 2. 
 3. 

@@ -31,8 +31,7 @@ register_converter(ColorModeConverter, 'colormode')
 
 urlpatterns = [
     path('', views.index, name='index'),  # Redirect root URL to index view
-    path('search/', RedirectView.as_view(url='/', permanent=True)),
-    path('search/<str:query>/', views.search_passages, name='search_passages'),
+    path('search/', views.search_passages, name='search_passages'),
     path('passage/', RedirectView.as_view(url='/', permanent=True)),
     path('passage/detail/<int:passage_id>/', views.detail, name='detail'),
     path('change_color_mode/<colormode:color_mode>/', views.change_color_mode, name='change_color_mode'),

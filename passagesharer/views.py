@@ -55,7 +55,8 @@ def detail(request: HttpRequest, passage_id: int) -> HttpResponse:
     })
 
 
-def search_passages(request: HttpRequest, query: str) -> HttpResponse:
+def search_passages(request: HttpRequest) -> HttpResponse:
+    query = request.GET.get('q', '')
     results = []
     if query:
         results = Passage.objects.filter(
@@ -65,6 +66,8 @@ def search_passages(request: HttpRequest, query: str) -> HttpResponse:
 
 
 def change_color_mode(request: HttpRequest, color_mode: str) -> HttpResponse:
+    if request.method != 'GET':
+        return HttpResponse(status=405)
     response = redirect(request.GET.get('next', 'index'))
     response.set_cookie('color_mode', color_mode, max_age=30*24*60*60)  # 30 days
     return response

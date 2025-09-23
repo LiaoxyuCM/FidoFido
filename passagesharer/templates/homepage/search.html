@@ -10,10 +10,14 @@
     {% block content %}
         <div class="main">
             <h2>Search Passages</h2>
-            <div class="search_description">
-                <input type="text" class="search_text_field" name="q" placeholder="Enter keywords..." value="{{ query }}" required>
-                <button onclick="window.location.href = '/search/' + document.querySelector('input.search_text_field').value">Search</button>
-            </div>
+            <!-- <div class="search_description"> -->
+            <!--     <input type="text" class="search_text_field" name="q" placeholder="Enter keywords..." value="{{ query }}" required> -->
+            <!--     <button onclick="window.location.href = '/search/' + document.querySelector('input.search_text_field').value">Search</button> -->
+            <!-- </div> -->
+            <form method='get' action="{% url 'search_passages' %}">
+                <input type="text" class="search_text_field" name="q" placeholder="Enter keywords..." value="{{ query }}" required />
+                <button type="submit">Search</button>
+            </form>
             <a href="{% url 'index' %}">Back to homepage</a>
             <hr>
             {% if query %}

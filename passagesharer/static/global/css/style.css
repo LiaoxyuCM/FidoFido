@@ -9,7 +9,7 @@
 
 @font-face {
     font-family: 'Unifont';
-    src: url('/static/global/fonts/unifont.woff2') format('woff2');
+    src: url('/static/global/fonts/unifont-12.1.04.ttf') format('truetype');
 }
 
 /* 

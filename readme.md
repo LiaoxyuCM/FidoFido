@@ -44,7 +44,7 @@ cd FidoFido
 rm -rf ./.git
 
 # 第二步
-pip install -r requirements.txt # 如果你根本没装好综上所述的PyPI包（这些包都是必须的！）
+pip install -r requirements.txt # 如果你压根没装好综上所述的PyPI包（这些包都是必须的！）
 python manage.py makemigrations
 python manage.py migrate
 python manage.py collectstatic # 如果不是第一次运行collectstatic的话，这个命令将会叫你"You have requested to collect static files at the destination location as specified in your settings file. This will overwrite existing files! Are you sure you want to do this?" （保留原文）输入"yes"继续。

@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (body.classList.contains('dark-mode')) {
         img.style.filter = 'invert(1)';
         img.setAttribute('src', '/static/global/icon/sunny-outline.svg');
-        img.setAttribute('alt', 'Light Mode');
+        img.setAttribute('alt', 'Light');
     } else {
         img.setAttribute('src', '/static/global/icon/moon-outline.svg');
-        img.setAttribute('alt', 'Dark Mode');
+        img.setAttribute('alt', 'Dark');
     };
 });

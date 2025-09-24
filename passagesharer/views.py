@@ -25,7 +25,8 @@ def detail(request: HttpRequest, passage_id: int) -> HttpResponse:
     except Passage.DoesNotExist:
         return render(request, 'homepage/404.html', status=404, context={"current_path": request.path})
     # Markdown support
-    passage_content_html = markdown.markdown(passage.content)
+    passage_content_html = markdown.markdown(passage.content) if request.GET.get("markdown", "off") == "on" \
+        else "<p>"+passage.content.replace("\n", "<br>")+"</p>"
     comments = Comment.objects.filter(to_passage=passage).select_related('reviewer').all()
     if request.method == 'POST':
         if 'delete_comment_id' in request.POST:

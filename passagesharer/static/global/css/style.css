@@ -182,7 +182,7 @@ button.del_psg_confirm:hover {
                  0 0 20px tomato;
 }
 
-button.change_colormode_button {
+button.change_colormode_button, button.markdown_toggle_button, button.homepage_button {
     width: 30px;
     height: 30px;
     padding: 0;
@@ -190,7 +190,19 @@ button.change_colormode_button {
     position: fixed;
     top: 0%;
     left: 100%;
-    transform: translate(-100%, 0%) translate(-23px, 23px);
+}
+
+button.change_colormode_button {
+    transform: translate(-100%, 0%) translate(-30px, 23px);
+}
+
+button.markdown_toggle_button {
+    font-size: 1.1em;
+    transform: translate(-100%, 0%) translate(-60px, 23px);
+}
+
+button.homepage_button {
+    transform: translate(-100%, 0%) translate(-90px, 23px);
 }
 
 /* button.del_psg_confirm::after {
@@ -273,6 +285,9 @@ body.dark-mode {
 .dark-mode button:hover {
     background-color: rgba(128, 128, 128, 0.75);
 }
+.dark-mode button.markdown_toggle_button {
+    color: white;
+}
 /* button::after {
     background-color: grey;
 } */
@@ -291,6 +306,9 @@ body.dark-mode {
 }
 .dark-mode ul.passages_view li::after {
     background-color: gray;
+}
+.dark-mode button.homepage_button img {
+    filter: invert(1);
 }
 
 /* @media (prefers-color-scheme: dark) {

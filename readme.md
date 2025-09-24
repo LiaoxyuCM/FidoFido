@@ -1,6 +1,60 @@
 # FidoFido
 
-It is a django-powered project now! \(Not a pure html+css+js project\)
+2 read English version of README.md please scroll down.
+
+## 警告
+
+### 在fidofido/settings.py
+
+1. 安全密钥是公开的。
+
+## 预览
+
+[点击跳转](https://fidofido-preview.rth1.xyz)
+
+或者手动访问
+https://fidofido-preview.rth1.xyz
+
+### 备用网站
+
+https://fidofido-preview.rth2.xyz
+
+## 初始化
+
+### 依赖列表
+
+| \#   | 依赖名       | 类型         |
+| ---- | ------------ | ------------ |
+| 0    | git          | 软件         |
+| 1    | python       | 软件         |
+| 2    | django       | PyPI包       |
+| 3    | markdown     | PyPI包       |
+
+### 准备开始
+
+如果你已经装了综上所述的依赖
+（或者仅仅装了类型为软件的依赖）
+请运行下面的命令开始。
+
+#### Bash
+```bash
+# 第一步
+git clone https://github.com/LiaoxyuCM/FidoFido.git
+cd FidoFido
+rm -rf ./.git
+
+# 第二步
+pip install -r requirements.txt # 如果你根本没装好综上所述的PyPI包（这些包都是必须的！）
+python manage.py makemigrations
+python manage.py migrate
+python manage.py collectstatic # 如果不是第一次运行collectstatic的话，这个命令将会叫你"You have requested to collect static files at the destination location as specified in your settings file. This will overwrite existing files! Are you sure you want to do this?" （保留原文）输入"yes"继续。
+python manage.py createsuperuser # 这个命令将会叫你输入用户名，邮箱（可留空）和密码。
+python manage.py runserver
+```
+
+为了节省篇幅，如果你在cmd或者powershell运行此程序的话，把`rm -rf`改成`rd`即可。
+
+# FidoFido
 
 ## Warning
 
@@ -46,34 +100,10 @@ rm -rf ./.git
 pip install -r requirements.txt # If you didn't installed the PyPI package listed above (These packages are REQUIRED!).
 python manage.py makemigrations
 python manage.py migrate
-python manage.py collectstatic # This command will ask you "You have requested to collect static files at the destination location as specified in your settings file. This will overwrite existing files! Are you sure you want to do this?" Enter "yes" to continue.
-python manage.py createsuperuser # This command will ask you entering username, email and password.
-python manage.py runserver
-```
-#### CMD & PowerShell
-```powershell
-# Step 1
-git clone https://github.com/LiaoxyuCM/FidoFido.git
-cd FidoFido
-rd ./.git
-
-# Step 2
-pip install -r requirements.txt # If you didn't installed the PyPI package listed above (These packages are REQUIRED!).
-python manage.py makemigrations
-python manage.py migrate
-python manage.py collectstatic # This command will ask you "You have requested to collect static files at the destination location as specified in your settings file. This will overwrite existing files! Are you sure you want to do this?" Enter "yes" to continue.
-python manage.py createsuperuser # This command will ask you entering username, email and password.
+python manage.py collectstatic # If it's not your first time running this command, this command will ask you "You have requested to collect static files at the destination location as specified in your settings file. This will overwrite existing files! Are you sure you want to do this?" Enter "yes" to continue.
+python manage.py createsuperuser # This command will ask you entering username, email(can be null) and password.
 python manage.py runserver
 ```
 
-## Short stories
-
-### How does Fido come from?
-
-This word "Fido" comes from
-**Old version of PEP-English Textbook / Grade 5-Volume II / Unit 5 "Whose dog is it?" / Section B / Let's talk.**
-
-![Fido's origin](https://github.com/user-attachments/assets/d893fb05-5735-4a29-b097-b3625c1acfbe)
-
-Fido is a dog.
+To save space, if you are running this program in cmd or PowerShell, change `rm rf` 2 `rd`.
 

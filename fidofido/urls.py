@@ -23,6 +23,7 @@ from django.urls import include
 urlpatterns = [
     path('', include('passagesharer.urls')),
     path('accounts/', include('accounts.urls')),
+    path('admin/', admin.site.urls),
 ]
 
 handler404 = 'passagesharer.views.err404'

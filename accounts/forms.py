@@ -2,13 +2,14 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
+from django.core.exceptions import ValidationError
 from .validators import StandardPasswordValidator
 from passagesharer.models import Passage
 
 class SimpleRegisterForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ["username", "password1", "password2"]
+        fields = ["username", "password1", "password2", "email"]
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -17,9 +18,13 @@ class SimpleRegisterForm(UserCreationForm):
         self.fields['username'].widget.attrs.update({'placeholder': 'Username'})
         self.fields['password1'].widget.attrs.update({'placeholder': 'Password'})
         self.fields['password2'].widget.attrs.update({'placeholder': 'Confirm Password'})
+        self.fields['email'].widget.attrs.update({'placeholder': 'Email'})
 
-        if 'email' in self.fields:
-            del self.fields['email']
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email=email).exists():
+            raise ValidationError("This email address has been used.")
+        return email
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -60,3 +65,11 @@ class UsernameChangeForm(forms.Form):
             raise forms.ValidationError("Your password is wrong.")
         
         return password
+    
+class SMSCodeForm(forms.Form):
+    # Send sms-code to user's email address
+    sms_code = forms.CharField(
+        max_length=6,
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': "SMS code"}),
+        label="SMS code"
+    )

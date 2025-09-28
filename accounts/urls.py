@@ -16,4 +16,5 @@ urlpatterns = [
     path("change_username/", views.change_username, name="change_username"),
     path("user_profile/", RedirectView.as_view(url='/', permanent=False)),
     path("user_profile/<int:userid>/", views.user_profile_view, name="user_profile"),
+    path("sms_code/", views.sms_code_view, name="fill_sms_code")
 ]

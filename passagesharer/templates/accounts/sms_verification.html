@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm registeration</title>
+    <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
+    <link rel="shortcut icon" href="{% static 'global/icon/favicon.ico' %}" type="image/x-icon">
+    <script src="{% static 'global/js/change_colormode.js' %}"></script>
+</head>
+<body>
+    <div class="center_temp">
+        <h2>Check your mailbox</h2>
+
+
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <input type="text" name="sms_code" placeholder="Enter SMS code" required>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+
+        <p>New to FidoFido?<a href="{% url 'accounts:register' %}">Register</a></p>
+        <a href="/">Homepage</a>
+        <a class="colormode_link">
+            <button class="change_colormode_button">
+                <img></img>
+            </button>
+        </a>
+    </div>
+</body>
+</html>

@@ -23,12 +23,14 @@ https://fidofido-preview.rth2.xyz
 
 ### 依赖列表
 
-| \#   | 依赖名       | 类型         |
-| ---- | ------------ | ------------ |
-| 0    | git          | 软件         |
-| 1    | python       | 软件         |
-| 2    | django       | PyPI包       |
-| 3    | markdown     | PyPI包       |
+| \#   | 依赖名        | 类型         |
+| ---- | ------------- | ------------ |
+| 0    | git           | 软件         |
+| 1    | python        | 软件         |
+| 2    | django        | PyPI包       |
+| 3    | markdown      | PyPI包       |
+| 4    | whitenoise    | PyPI包       |
+| 5    | python-dotenv | PyPI包       |
 
 ### 准备开始
 
@@ -53,6 +55,16 @@ python manage.py runserver
 ```
 
 为了节省篇幅，如果你在cmd或者powershell运行此程序的话，把`rm -rf`改成`rd`即可。
+
+### 添加.env文件
+
+在项目目录"\\accounts\\"下新建一个名为`.env`的文件，内容如下：
+
+```env
+smtp_server=<你的SMTP服务器地址>
+FidoFido_registeration_smtp_sender_email=<你的SMTP用户名>
+FidoFido_registeration_smtp_password=<你的SMTP密码>
+```
 
 # FidoFido
 
@@ -82,6 +94,8 @@ https://fidofido-preview.rth2.xyz
 | 1    | python       | software     |
 | 2    | django       | PyPI package |
 | 3    | markdown     | PyPI package |
+| 4    | whitenoise   | PyPI package |
+| 5    | python-dotenv| PyPI package |
 
 ### Ready to Start
 
@@ -107,3 +121,11 @@ python manage.py runserver
 
 To save space, if you are running this program in cmd or PowerShell, change `rm rf` 2 `rd`.
 
+### Add .env file
+In the project directory "\\accounts\\", create a new file named `.env`, with the following content:
+
+```env
+smtp_server=<your SMTP server address>
+FidoFido_registeration_smtp_sender_email=<your SMTP username>
+FidoFido_registeration_smtp_password=<your SMTP password>
+```

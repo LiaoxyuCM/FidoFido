@@ -19,7 +19,7 @@
                 <button type="submit">Search</button>
             </form>
             {% if is_logged %}
-                <p>{{ username }}<a href="/accounts/dashboard"><button>Dashboard</button></a></p>
+                <p>{{ username }}<a href="{% if user.is_superuser %}{% url 'admin:index' %}{% else %}{% url 'accounts:dashboard' %}{% endif %}"><button>Dashboard</button></a></p>
             {% else %}
                 <ul>
                     <li><a href="{% url 'accounts:register' %}"><button>Register</button></a></li>

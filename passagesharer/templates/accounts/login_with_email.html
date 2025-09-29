@@ -24,15 +24,12 @@
         <form method="post">
             {% csrf_token %}
             <div>
-                <input type="text" name="username" placeholder="Username" required>
-            </div>
-            <div>
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="email" name="email" placeholder="Email" required>
             </div>
             <button type="submit">Login</button>
         </form>
 
-        <a href="{% url 'accounts:login_with_email' %}">Login with email</a>
+        <a href="{% url 'accounts:login' %}">Login with username&amp;password</a>
         <p>New to FidoFido?<a href="{% url 'accounts:register' %}">Register</a></p>
         <a href="/">Homepage</a>
         <a class="colormode_link">

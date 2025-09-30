@@ -46,6 +46,17 @@ div.main {
                 0 1px 10px rgba(0, 0, 0, 0.1);
 }
 
+div.block {
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    margin: 5px;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2),
+                0 1px 10px rgba(0, 0, 0, 0.1);
+}
+
 div.center_temp {
     position: absolute;
     top: 50%;
@@ -63,6 +74,22 @@ div.center_temp {
                 0 1px 10px rgba(0, 0, 0, 0.1);
 }
 
+div.register_form {
+    height: 309.1px;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+div.register_form:hover {
+    height: 452.3px;
+}
+
+div.helptext {
+    font-size: 0.8em;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
 button, input[type="text"], input[type="email"], input[type="password"] {
     height: 2em;
     border: none;
@@ -78,7 +105,7 @@ button, input[type="text"], input[type="email"], input[type="password"] {
 button {
     cursor: pointer;
     width: 6rem;
-    background-color: #eee;
+    background-color: #f0f0f0;
 }
 
 button:hover {

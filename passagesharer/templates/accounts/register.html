@@ -11,8 +11,8 @@
     <script src="{% static 'global/js/change_colormode.js' %}"></script>
 </head>
 <body>
-    <div class="center_temp" style="width: 350px;">
-        <h2>Welcome to FidoFido!</h2>
+    <div class="center_temp register_form" style="width: 300px;">
+        <h3>Welcome to FidoFido!</h3>
 
         {% if messages %}
             {% for message in messages %}
@@ -26,17 +26,11 @@
             <div>
                 {{ form.username }}
                 {{ form.username.errors }}
-                <div class="helptext">
-                    <ul>
-                        <li>Your username must be unique</li>
-                    </ul>
-                </div>
             </div>
             
             <div>
                 {{ form.password1 }}
                 {{ form.password1.errors }}
-                <small><div class="helptext">{{ form.password1.help_text }}</div></small>
             </div>
             
             <div>
@@ -59,6 +53,17 @@
                 <img></img>
             </button>
         </a>
+        
+        <div class="block" style="margin: 1px; padding: 5px">
+            <div>
+                <div class="helptext">
+                    <ul>
+                        <li>Your username must be unique</li>
+                    </ul>
+                </div>
+            </div>
+            <small><div class="helptext">{{ form.password1.help_text }}</div></small>
+        </div>
     </div>
 </body>
 </html>

@@ -2,6 +2,14 @@
 
 2 read English version of README.md please scroll down.
 
+## 免责声明
+
+FidoFido是一个尚未正式上线的论坛网站，命名可能与FIDO产生冲突。
+
+FIDO是一个搞安全的标准。
+
+所以，请勿将FidoFido与FIDO联系起来，作者不会承担FidoFido命名带来的后果。
+
 ## 警告
 
 ### 在fidofido/settings.py
@@ -67,6 +75,14 @@ FidoFido_registeration_smtp_password=<你的SMTP密码>
 ```
 
 # FidoFido
+
+## Disclaimer
+
+FidoFido is a forum website that has not been officially published, and the naming may conflict with FIDO.
+
+FIDO is a standard for security.
+
+Therefore, please do not associate FidoFido with FIDO. The author will not bear the consequences of naming FidoFido.
 
 ## Warning
 

@@ -78,6 +78,7 @@ button, input[type="text"], input[type="email"], input[type="password"] {
 button {
     cursor: pointer;
     width: 6rem;
+    background-color: #eee;
 }
 
 button:hover {
@@ -86,27 +87,6 @@ button:hover {
                  0 0 15px cyan,
                  0 0 20px cyan;
 }
-
-/* button::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 10px;
-    height: 100%;
-    border-radius: 5px;
-    background-color: #FCFCFC;
-    z-index: -114514;
-    filter: blur(5px);
-} */
-
-/* button:hover::after {
-    animation: stretching 0.3s ease-in-out forwards;
-} */
-
-/* button:not(button:hover)::after {
-    animation: unstretching 0.3s ease-in-out forwards;
-} */
 
 button, input, textarea {
     border-radius: 3px;
@@ -205,18 +185,6 @@ button.homepage_button {
     transform: translate(-100%, 0%) translate(-90px, 23px);
 }
 
-/* button.del_psg_confirm::after {
-    background-color: rgba(255, 164, 180, 0.75);
-} */
-
-/* button.del_psg_confirm:hover::after {
-    animation: stretching_shinning .6s ease-in-out forwards;
-    width: 100%;
-    box-shadow: 0 0 10px red,
-    0 0 20px red,
-    0 0 30px red;
-} */
-
 form {
     margin: 0;
 }
@@ -229,23 +197,6 @@ code {
     from { width: 0; }
     to { width: 100%; }
 }
-
-/* @keyframes stretching_shinning {
-    from {
-        width: 0;
-        box-shadow: none;
-    }
-    50% {
-        width: 100%;
-        box-shadow: none;
-    }
-    to {
-        width: 100%;
-        box-shadow: 0 0 10px red,
-        0 0 20px red
-        0 0 30px red;
-    }
-} */
 
 @keyframes unstretching {
     from { width: 100%; }
@@ -310,37 +261,3 @@ body.dark-mode {
 .dark-mode button.homepage_button img {
     filter: invert(1);
 }
-
-/* @media (prefers-color-scheme: dark) {
-    body {
-        background-image: url('/static/global/image/wallpaper_night.jpg');
-    }
-    h1, h2, h3, h4, h5, h6, p, label, button, small, li {
-        color: white;
-    }
-    button {
-        background-color: rgba(0, 0, 0, 0.75);
-    }
-    button:hover {
-        background-color: rgba(128, 128, 128, 0.75);
-    }
-//  button::after {
-//      background-color: grey;
-//  }
-//  button.del_psg_confirm::after {
-//     background-color: rgba(128, 0, 128, 0.75);
-// }
-   input[type="text"], input[type="email"], input[type="password"], textarea{
-        background-color: rgba(0, 0, 0, 0.3);
-        color: white;
-    }
-    input::placeholder {
-        color: rgb(207, 207, 207);
-    }
-    a {
-        color: cyan;
-    }
-    ul.passages_view li::after {
-        background-color: gray;
-    }
-} */

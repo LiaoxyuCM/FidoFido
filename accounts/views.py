@@ -100,6 +100,7 @@ FidoFido
         stored_code = request.session.get('smscode')
         
         if str(stored_code) == user_entered_code:
+            del request.session["smscode"]
             registration_data = request.session.get('registration_data')
             if registration_data:
                 User = get_user_model()
@@ -137,13 +138,8 @@ def login_with_email_view(request: HttpRequest) -> HttpResponseRedirect | HttpRe
             messages.error(request, "Please provide your email address.")
             return redirect("accounts:login_with_email")
         
-        try:
-            User = get_user_model()
-            request.session['user_email'] = email
-            return redirect("accounts:login_sms_code")
-        except get_user_model().DoesNotExist:
-            messages.error(request, "No account found with this email.")
-            return redirect("accounts:login_with_email")
+        request.session['user_email'] = email
+        return redirect("accounts:login_sms_code")
 
 def login_sms_code_view(request: HttpRequest) -> HttpResponseRedirect | HttpResponsePermanentRedirect | HttpResponse: # type: ignore
     # if request.method == "GET":
@@ -172,10 +168,11 @@ def login_sms_code_view(request: HttpRequest) -> HttpResponseRedirect | HttpResp
         receiver = [request.session['user_email'],]
 
         User = get_user_model()
-        user = User.objects.get(email=request.session['user_email'])
-        
         try:
-            mail_content = f"""\
+            user = User.objects.get(email=request.session['user_email'])
+            
+            try:
+                mail_content = f"""\
 Dear {user.username},
 
 Hello.
@@ -190,22 +187,25 @@ Best regards,
 FidoFido
 """
             
-            message = MIMEText(mail_content, 'plain', 'utf-8')
-            message['From'] = formataddr(("FidoFido Verification", sender_mail))
-            message['To'] = receiver[0]
-            message['Subject'] = Header("Your Verification Code - FidoFido Verification", 'utf-8')
-            
-            server = smtplib.SMTP_SSL(getenv("smtp_server"), 465)
-            server.login(sender_mail, password)
-            server.sendmail(sender_mail, receiver, message.as_string())
-            server.quit()
-            
-            messages.success(request, "Verification code has been sent to your email!")
-            return render(request, "accounts/sms_verification.html")
-            
+                message = MIMEText(mail_content, 'plain', 'utf-8')
+                message['From'] = formataddr(("FidoFido Verification", sender_mail))
+                message['To'] = receiver[0]
+                message['Subject'] = Header("Your Verification Code - FidoFido Verification", 'utf-8')
+                
+                server = smtplib.SMTP_SSL(getenv("smtp_server"), 465)
+                server.login(sender_mail, password)
+                server.sendmail(sender_mail, receiver, message.as_string())
+                server.quit()
+                
+                messages.success(request, "Verification code has been sent to your email!")
+                return render(request, "accounts/sms_verification.html")
+                
+            except Exception as e:
+                messages.error(request, f"Failed to send verification code: {str(e)}")
+                return redirect("accounts:register")
         except Exception as e:
-            messages.error(request, f"Failed to send verification code: {str(e)}")
-            return redirect("accounts:register")
+            messages.error(request, "No account found with this email.")
+            return redirect("accounts:login_with_email")
     
     elif request.method == "POST":
         user_entered_code = request.POST.get('sms_code')

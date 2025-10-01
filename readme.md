@@ -12,6 +12,15 @@ FIDO是一个搞安全的标准。
 
 ## 警告
 
+### 关于使用验证码注册和登录的提示
+
+\[此段落被标记为因修复难度大而暂时发布的提示\]
+
+1. 无论是注册还是登录，验证码要等待5分钟才能刷新，即使离开验证码页面，计时仍在继续。
+2. 如果用户在5分钟内刷新验证码页面，验证码不会刷新，并且会提示用户已经刷新过验证码了。
+所以有些用户可能一进去就会看到验证码已发送的提示。
+3. 5分钟过后，请返回注册或邮箱登录页面，**重新**填写里面的所有信息，然后提交，验证码就会刷新。（而不是直接刷新验证码页面）
+
 ### 在fidofido/settings.py
 
 1. 安全密钥是公开的。
@@ -85,6 +94,15 @@ FIDO is a standard for security.
 Therefore, please do not associate FidoFido with FIDO. The author will not bear the consequences of naming FidoFido.
 
 ## Warning
+
+### Tips about using verification code to register and login
+
+\[This paragraph is marked as a tip temporarily published due to the difficulty of fixing it\]
+
+1. Whether registering or logging in, the verification code needs to wait 5 minutes to refresh. Even if you leave the verification code page, the timer is still running.
+2. If the user refreshes the verification code page within 5 minutes, the verification code will not be refreshed, and the user will be prompted that they have refreshed the verification code.
+So some users may see the prompt that the verification code has been sent as soon as they enter.
+3. After 5 minutes, please return to the registration or email-login page, fill in all the information **again**, and then submit it, the verification code will be refreshed. \(Not directly refreshing the verification code page\)
 
 ### In fidofido/settings.py
 

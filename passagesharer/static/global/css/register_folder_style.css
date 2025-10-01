@@ -1,0 +1,9 @@
+div.register_form {
+    height: 309.1px;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+div.register_form:hover {
+    height: 452.3px;
+}

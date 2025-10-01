@@ -74,16 +74,6 @@ div.center_temp {
                 0 1px 10px rgba(0, 0, 0, 0.1);
 }
 
-div.register_form {
-    height: 309.1px;
-    overflow: hidden;
-    transition: all 0.3s ease-in-out;
-}
-
-div.register_form:hover {
-    height: 452.3px;
-}
-
 div.helptext {
     font-size: 0.8em;
     margin-top: 3px;

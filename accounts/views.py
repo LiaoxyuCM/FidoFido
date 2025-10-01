@@ -100,7 +100,6 @@ FidoFido
         stored_code = request.session.get('smscode')
         
         if str(stored_code) == user_entered_code:
-            del request.session["smscode"]
             registration_data = request.session.get('registration_data')
             if registration_data:
                 User = get_user_model()

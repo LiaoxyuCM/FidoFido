@@ -110,13 +110,15 @@ So some users may see the prompt that the verification code has been sent as soo
 
 ## Preview
 
-[Click here](https://fidofido-preview.rth1.xyz/)
+[Click here](https://liaoxyucm.rth1.xyz/FidoFido_Preview)
 
 Or access manually:
-https://fidofido-preview.rth1.xyz
+https://liaoxyucm.rth1.xyz/FidoFido_Preview/
+
+**WARNING: Don't forget the tailing slash!**
 
 ### Alternative plan
-https://fidofido-preview.rth2.xyz
+https://liaoxyucm.rth2.xyz/FidoFido_Preview/
 
 ## Initialization
 

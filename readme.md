@@ -27,14 +27,16 @@ FIDO是一个搞安全的标准。
 
 ## 预览
 
-[点击跳转](https://fidofido-preview.rth1.xyz)
+[点击跳转](https://liaoxyucm.rth1.xyz/FidoFido_Preview/)
 
 或者手动访问
-https://fidofido-preview.rth1.xyz
+https://liaoxyucm.rth1.xyz/FidoFido_Preview/
+
+**警告：不要忘记后面的斜杠！**
 
 ### 备用网站
 
-https://fidofido-preview.rth2.xyz
+https://liaoxyucm.rth2.xyz/FidoFido_Preview/
 
 ## 初始化
 
@@ -110,7 +112,7 @@ So some users may see the prompt that the verification code has been sent as soo
 
 ## Preview
 
-[Click here](https://liaoxyucm.rth1.xyz/FidoFido_Preview)
+[Click here](https://liaoxyucm.rth1.xyz/FidoFido_Preview/)
 
 Or access manually:
 https://liaoxyucm.rth1.xyz/FidoFido_Preview/
